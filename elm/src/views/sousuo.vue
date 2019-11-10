@@ -35,7 +35,7 @@
 			fn(){
 				this.names = localStorage.ncl
 				console.log(this.names)
-				this.$http.get('http://elm.cangdu.org/v4/restaurants?extras[]=restaurant_activity&geohash='+this.names+'&keyword='+this.values+'&type=search').then((data)=>{
+				this.axios.get('http://elm.cangdu.org/v4/restaurants?extras[]=restaurant_activity&geohash='+this.names+'&keyword='+this.values+'&type=search').then((data)=>{
 					console.log(data.data)
 					if(data.data.status==0){
 						this.inx=1

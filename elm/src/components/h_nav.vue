@@ -16,7 +16,6 @@
 <script>
 	export default {
 		name: 'h_nav',
-
 	}
 </script>
 
@@ -26,7 +25,8 @@
 		position: relative;
 		top: 0;
 		left: 0;
-		z-index: 999;
+		z-index: 2
+		;
 		width: 100%;
 		height: 2.125rem;
 		line-height: 2.125rem;

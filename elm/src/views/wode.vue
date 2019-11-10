@@ -1,9 +1,10 @@
 <template>
 	<div style="background: #f5f5f5;">
-		<div class="j_dad">
-			<p class="iconfont icon-touxiang1"></p>
+		<div class="j_dad" @click="glogin">
+			<img :src="img_url" alt="" />
 			<div>
-				<p>登陆/注册</p>
+				<p v-if="inx==2">登陆/注册</p>
+				<p v-if="inx==1">{{names}}</p>
 				<span class="iconfont icon-shouji">暂无绑定手机号</span>
 			</div>
 			<p class="j_gr">
@@ -11,21 +12,21 @@
 			</p>
 		</div>
 		<div class="j_do">
-			<div>
+			<div @click="tiaoo">
 				<span>0.00</span><span>元</span><br />
 				<p>我的余额</p>
 			</div>
-			<div style="border-left: solid 1px #f5f5f5;border-right: solid 1px #f5f5f5;">
-				<span>0</span><span>个</span><br />
+			<div style="border-left: solid 1px #f5f5f5;border-right: solid 1px #f5f5f5;" @click="tyh">
+				<span>3</span><span>个</span><br />
 				<p>我的优惠</p>
 			</div>
-			<div>
+			<div @click="tiaot">
 				<span>0</span><span>分</span><br />
 				<p>我的积分</p>
 			</div>
 		</div>
 		<div style="background: #FFFFFF;margin-top: 0.75rem;">
-			<div class="j_ok">
+			<div class="j_ok" @click="gding">
 				<span class="iconfont icon-liebiao"></span>
 				<span>我的订单</span>
 				<span>></span>
@@ -34,20 +35,20 @@
 				<span class="iconfont icon-shangchengjifenshangcheng_xuanzhong"></span>
 				<span>积分商城</span>
 				<span>></span>
-			</div>
-			<div class="j_ok">
+			</div>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
+			<div class="j_ok" @click="Vip">
 				<span class="iconfont icon-huangguan"></span>
 				<span>饿了么会员卡</span>
 				<span>></span>
 			</div>
 		</div>
 		<div class="j_km">
-			<div class="j_ok">
+			<div class="j_ok" @click="serve">
 				<span class="iconfont icon-zhengfangxing"></span>
 				<span>服务中心</span>
 				<span>></span>
 			</div>
-			<div class="j_ok">
+			<div class="j_ok" @click="donload">
 				<span class="iconfont icon-elemo"></span>
 				<span>下载饿了么APP</span>
 				<span>></span>
@@ -57,6 +58,45 @@
 </template>
 
 <script>
+	export default {
+		methods:{
+			tiaoo(){
+				location.href="#/yue"
+			},
+			tiaot(){
+				location.href="#/jifen"
+			},
+			gding(){
+				location.href="#/fujin/dingdan"
+			},
+			glogin(){
+				if(localStorage.inx==1){
+					location.href="#/users"
+				}else{
+					location.href="#/logins"
+				}
+			},
+			donload(){
+				location.href="#/donload"
+			},
+			serve(){
+				location.href="#/serve"
+			},
+			Vip(){
+				location.href="#/vip"
+			},
+			tyh(){
+				location.href="#/yuh"
+			}
+		},
+		data(){
+			return {
+				names:localStorage.name,
+				inx:localStorage.inx,
+				img_url:localStorage.img_url
+			}
+		},
+	}
 </script>
 
 <style>
@@ -67,15 +107,15 @@
 		color: #FFFFFF;
 	}
 	
-	.j_dad .icon-touxiang1 {
+	.j_dad img {
 		flex: 1;
 		color: #CCCCCC;
 		font-size: 2.8rem;
-		line-height: 3rem;
-		width: 100%;
-		height: 100%;
+		width: 20%;
+		height: 10%;
 		display: inline-block;
 		margin-right: 0.75rem;
+		border-radius:50 %;
 	}
 	
 	.j_dad .shouji {

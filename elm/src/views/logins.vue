@@ -26,7 +26,7 @@
 			</li>
 			<li class="c_pl">
 				<input class="inputli" type="text" placeholder="验证码" v-model="yanmodel">
-				
+
 				<span class="j_ik" @click="random">看不清<br />换一张</span>
 				<img class="yanzhengimg" :src="yanurl" alt="">
 			</li>
@@ -67,12 +67,12 @@
 		},
 		methods: {
 			random() {
-				this.$http.post('https://elm.cangdu.org/v1/captchas')
+				this.axios.post('https://elm.cangdu.org/v1/captchas')
 					.then(data => {
 						this.yanurl = data.data.code
 					})
 			},
-			go(){
+			go() {
 				this.$router.go(-1)
 			},
 			handin() {
@@ -86,10 +86,10 @@
 					alert('请输入验证码')
 					return;
 				} else {
-					this.$http.post('https://elm.cangdu.org/v2/login', {
-						user: this.user,
-						pass: this.pass,
-						captcha_code: this.verifyNumber
+					this.axios.post('https://elm.cangdu.org/v2/login', {
+						username: this.user,
+						password: this.pass,
+						captcha_code: this.yanmodel
 					}).then((data) => {
 						console.log(data);
 						if(data.data.message == '密码错误') {
@@ -98,10 +98,11 @@
 							alert('验证码错误');
 						} else {
 							alert('登录成功');
-							this.$router.push({
-								path: '/fujin/waimai/'+localStorage.ncl
-							})
+							localStorage.name = this.user
+							localStorage.inx = 1
+							this.$router.go(-1)
 						}
+
 					})
 
 				}
@@ -156,7 +157,8 @@
 	.blue {
 		left: 1rem;
 	}
-	.c_kj{
+	
+	.c_kj {
 		width: 100%;
 	}
 	
@@ -247,12 +249,13 @@
 		margin-right: 1.5rem;
 		margin-top: 0.8rem;
 	}
-	.j_ik{
+	
+	.j_ik {
 		margin-top: 0.6rem;
 		float: right;
 		font-size: .55rem;
 		display: inline-block;
 		margin-right: 1rem;
-    color: #666;
+		color: #666;
 	}
 </style>

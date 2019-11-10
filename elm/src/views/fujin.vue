@@ -38,7 +38,7 @@
 			}
 		},
 		created(){
-			this.names = this.$store.state.names
+			this.names = localStorage.ncl
 		},
 		
 	}

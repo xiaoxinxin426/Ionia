@@ -67,7 +67,7 @@
 			search() {
 				if(this.val) {
 					this.type = true
-					this.$http.get('http://elm.cangdu.org/v1/pois', {
+					this.axios.get('http://elm.cangdu.org/v1/pois', {
 						params: {
 							type: 'search',
 							city_id: this.$route.params.id,
@@ -92,6 +92,7 @@
 			},
 			fn(i){
 				this.$store.commit('addOrder',i)
+				localStorage.ncl = i
 			}
 		}
 	}

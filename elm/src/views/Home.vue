@@ -5,13 +5,10 @@
 				ele.me
 			</div>
 			<div slot="right">
-				<router-link to="/logins">
-					登陆
+				<router-link to="/logins" v-if="inx==2">
+					登陆|注册
 				</router-link>
-				|
-				<router-link to="/logins">
-					注册
-				</router-link>
+				<p v-if="inx==1"><a href="#/fujin/wode">我的</a></p>
 			</div>
 		</h_nav>
 		<!-- 定位 header -->
@@ -67,12 +64,19 @@
 			return {
 				hots: [],
 				header: '',
-				list: ''
+				list: '',
+				names:'',
+				inx:localStorage.inx
 			}
 		},
 		created() {
 			// 定位 header
-			this.$http.get('http://elm.cangdu.org/v1/cities', {
+				if(localStorage.name!=''){
+					this.inx=1
+				}else{
+					this.inx=2
+				}
+			this.axios.get('http://elm.cangdu.org/v1/cities', {
 				params: {
 					type: 'guess'
 				}
@@ -80,7 +84,7 @@
 				this.header = data.data
 			})
 			// 热门 hot
-			this.$http.get('http://elm.cangdu.org/v1/cities', {
+			this.axios.get('http://elm.cangdu.org/v1/cities', {
 				params: {
 					type: 'hot'
 				}
@@ -88,7 +92,7 @@
 				this.hots = data.data
 			})
 			// list 城市列表
-			this.$http.get('http://elm.cangdu.org/v1/cities', {
+			this.axios.get('http://elm.cangdu.org/v1/cities', {
 				params: {
 					type: 'group'
 				}

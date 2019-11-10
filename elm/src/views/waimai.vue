@@ -11,16 +11,14 @@
 				{{names.address}}
 			</div>
 			<div slot="right">
-				<router-link to="/logins">
-					登陆|注册
-				</router-link>
+				<p><a href="#/fujin/wode">我的</a></p>
 			</div>
 		</h_nav>
 		<lunbo></lunbo>
 		<p class="iconfont icon-dianpu"><span class="j_sj">附近商家</span></p>
 		<!--下面20条数据-->
 		<div style="padding-bottom: 1.25rem;">
-		<div v-for="(i,$index) in arr" :key="$index" class="j_divd">
+		<div v-for="(i,$index) in arr" :key="$index" class="j_divd" @click="shopl(i.id)">
 			<div>
 				<img :src="'//elm.cangdu.org/img/'+i.image_path" alt="" />
 			</div>
@@ -68,21 +66,28 @@
 			return {
 				arr: '',
 				names: '',
-				loading:true
+				loading:true,
+			}
+		},
+		methods:{
+			shopl(i){
+				location.href=`#/shoplist/${i}`
 			}
 		},
 		created() {
 				setTimeout(()=>{
 				this.loading=false
 			},1000)
-			this.$http.get('http://elm.cangdu.org/shopping/restaurants?latitude=32.035351&longitude=118.820363&offset=0&limit=20&extras[]=activities&keyword=&restaurant_category_id=&restaurant_category_ids[]=&order_by=&delivery_mode[]=').then((data) => {
+				this.names = localStorage.name
+			this.axios.get('http://elm.cangdu.org/shopping/restaurants?latitude=32.035351&longitude=118.820363&offset=0&limit=20&extras[]=activities&keyword=&restaurant_category_id=&restaurant_category_ids[]=&order_by=&delivery_mode[]=').then((data) => {
 				console.log(data.data)
 				this.arr = data.data
 			})
-			this.$http.get('https://elm.cangdu.org/v2/pois/' + this.$store.state.names + '').then((data) => {
+			this.axios.get('https://elm.cangdu.org/v2/pois/' +localStorage.ncl+ '').then((data) => {
 				console.log(data.data)
 				this.names = data.data
 			})
+			localStorage.img_url = '//elm.cangdu.org/img/default.jpg'
 		},
 	}
 </script>

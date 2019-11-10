@@ -1,10 +1,13 @@
 <template>
 	<div class="ly" style="background:#f5f5f5">
-		<headBar>
-			<template v-slot:left>
-				<router-link to="/logins">我</router-link>
-			</template>
-		</headBar>
+		<h_nav>
+			<div slot="left">
+				<i class="iconfont icon-toright" @click="go"></i>
+			</div>
+			<div slot="title">
+				重置密码
+			</div>
+		</h_nav>
 		<div class="c_center">
 			<div class="c_and_pass"><input class="c_pa" type="text" v-model="am.us_name" placeholder="账号"></div>
 			<div class="c_and_pass"><input class="c_pa" type="text" v-model="am.old_pass" placeholder="旧密码"></div>
@@ -28,10 +31,10 @@
 </template>
 
 <script>
-	import headBar from '../components/headB.vue'
+	import h_nav from './../components/h_nav.vue'
 	export default {
 		components: {
-			headBar
+			h_nav
 		},
 		data() {
 			return {
@@ -52,7 +55,7 @@
 		methods: {
 			//获取验证码
 			cap() {
-				this.$http.post('https://elm.cangdu.org/v1/captchas').then((data) => {
+				this.axios.post('https://elm.cangdu.org/v1/captchas').then((data) => {
 					console.log(data);
 					this.cap_img = data.data.code
 				})
@@ -69,7 +72,7 @@
 					}
 				}
 				if(types) {
-					this.$http.post('https://elm.cangdu.org/v2/changepassword', {
+					this.axios.post('https://elm.cangdu.org/v2/changepassword', {
 						username: this.am.us_name,
 						oldpassWord: this.am.old_pass,
 						newpassword: this.am.new_pass,
@@ -85,7 +88,10 @@
 					alert('缺失')
 				}
 
-			}
+			},
+			go() {
+				this.$router.go(-1)
+			},
 		},
 	}
 </script>
@@ -138,7 +144,6 @@
 		background: #fff;
 		float: left;
 		width: 60%;
-		
 	}
 	
 	.yes {
@@ -158,7 +163,7 @@
 	.c_right {
 		width: 40%;
 		float: right;
-		margin-top: -1.3rem;
+		overflow: hidden;
 	}
 	
 	.c_right>span {
