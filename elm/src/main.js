@@ -19,9 +19,15 @@ var store = new Vuex.Store({
 		names: '',
 		titles: '',
 		cons: '',
-		school: ''
+		school: '',
+		numb: [],
+		cityn: '',
+		beiz:[]
 	},
 	mutations: {
+		addPri(state, i) {
+			state.numb = i
+		},
 		addOrder(state, i) {
 			state.names = i
 		},
@@ -31,6 +37,30 @@ var store = new Vuex.Store({
 		addcons(state, i) {
 			state.cons = i
 		},
+		cityn(state, i) {
+			state.cityn = i
+		},
+		del(state) {
+			state.numb = ''
+		},
+		beiz(state,i){
+			state.beiz.push(i)
+		}
+	},
+	getters: {
+		totalPrice(state) {
+			if(state.numb == '') {
+				t = ''
+				return
+			} else {
+				var t = 0
+				state.numb.forEach(el => {
+					t += el.specfoods[0].price * (el.__v || 1)
+				})
+				console.log(t)
+				return t;
+			}
+		}
 	},
 })
 new Vue({

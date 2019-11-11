@@ -9,7 +9,6 @@
 				{{$route.params.title}}
 			</div>
 		</h_nav>
-
 		<div class="filter">
 			<div class="j_header">
 				<span v-for="(item,index) in list" :key='index' @click="type=index" :style="{color:index==type?'#3190e8':''}">{{item}}</span>
@@ -20,8 +19,7 @@
 					<p v-for="(items,indexs) in filter" :key="indexs" @click="types=indexs;num=indexs" :style="{background:indexs==types?'white':''}">
 						<span>
 							<img :src="'https://fuss10.elemecdn.com/'+items.image_url">
-						</span>
-						{{items.name}}
+						</span> {{items.name}}
 						<span style="float: right;width: 0.75rem ;margin-right: 0.5rem;">{{items.count}}</span>
 					</p>
 				</div>
@@ -36,8 +34,7 @@
 			<!--  -->
 			<div class="header2" v-if="type == 1">
 				<p v-for="(i,index) in sort" :key='index' @click="typessss=i.id;s()">
-					<i :class="i.img"></i>
-					{{i.name}}
+					<i :class="i.img"></i> {{i.name}}
 				</p>
 			</div>
 			<!--  -->
@@ -64,36 +61,35 @@
 				</div>
 			</div>
 		</div>
-
-		<div style="padding-bottom: 1.25rem;">
-			<div v-for="(i,$index) in arr" :key="$index" class="j_divd">
+		<div style="padding-bottom: 1.25rem;background: #FFFFFF;">
+			<div v-for="(i,$index) in arr" :key="$index" class="j_divd" @click="shopl(i.id)">
 				<div>
-					<img style="width: 100%;height: 100%;" :src="'//elm.cangdu.org/img/'+i.image_path" />
+					<img style=" width: 100%;height: 100%; " :src=" '//elm.cangdu.org/img/'+i.image_path " />
 				</div>
 				<div>
-					<div class="j_pl">
-						<span class="j_pp">品牌</span>
-						<span class="j_pk">{{i.name}}</span>
-						<ul class="j_bh">
-							<li v-for="(i,$index) in i.supports" :key="$index">
+					<div class="j_pl ">
+						<span class="j_pp ">品牌</span>
+						<span class="j_pk ">{{i.name}}</span>
+						<ul class="j_bh ">
+							<li v-for="(i,$index) in i.supports " :key="$index ">
 								{{i.icon_name}}
 							</li>
 						</ul>
 					</div>
-					<div class="j_tdiv">
-						<p style="line-height: 0.6rem;">
-							<span v-for="i in 5" :key="i" class="iconfont icon-start j_xinxin"></span>
-							<span class="j_fen">{{i.rating}}</span>
-							<span class="j_shou">月售{{i.recent_order_num}}单</span>
-							<span class="j_sright j_pq">准时达</span>
-							<!-- <span class="j_sright j_lp" v-if="i.delivery_mode.text">{{i.delivery_mode.text}}</span> -->
+					<div class="j_tdiv ">
+						<p style="line-height: 0.6rem; ">
+							<span v-for="i in 5 " :key="i " class="iconfont icon-start j_xinxin "></span>
+							<span class="j_fen ">{{i.rating}}</span>
+							<span class="j_shou ">月售{{i.recent_order_num}}单</span>
+							<span class="j_sright j_pq ">准时达</span>
+							<!-- <span class="j_sright j_lp " v-if="i.delivery_mode.text ">{{i.delivery_mode.text}}</span> -->
 						</p>
 					</div>
-					<div style="line-height: 0;">
-						<span class="j_lk">{{i.float_minimum_order_amount}}元起送 /</span>
-						<span class="j_lk">{{i.piecewise_agent_fee.tips}}</span>
-						<span class="j_sright j_hg" style="color: #3190e8;">{{i.order_lead_time}}</span>
-						<span class="j_sright j_hg">{{i.distance}}/</span>
+					<div style="line-height: 0; ">
+						<span class="j_lk ">{{i.float_minimum_order_amount}}元起送 /</span>
+						<span class="j_lk ">{{i.piecewise_agent_fee.tips}}</span>
+						<span class="j_sright j_hg " style="color: #3190e8; ">{{i.order_lead_time}}</span>
+						<span class="j_sright j_hg ">{{i.distance}}/</span>
 					</div>
 				</div>
 			</div>
@@ -188,6 +184,9 @@
 					console.log(data.data)
 					this.arr = data.data
 				})
+			},
+			shopl(i){
+				location.href=`#/shoplist/${i}`
 			}
 		},
 		created() {
@@ -249,23 +248,26 @@
 		color: white;
 	}
 
-	.filter .header {
+	.filter .j_header {
 		width: 100%;
 		display: flex;
 		height: 1rem;
 		line-height: 1rem;
 	}
 	.filter{
-		margin-top: 4.225rem;
+		width: 100%;
+		position: fixed;
+		top: 3rem;
+		z-index: 99;
 	}
-	.filter .header span {
+	.filter .j_header span {
 		flex: 1;
 		text-align: center;
 		font-size: 0.35rem;
 		border-right: 0.025rem solid pink;
 	}
 
-	.filter .header span:last-of-type {
+	.filter .j_header span:last-of-type {
 		border-right: none;
 	}
 
@@ -307,14 +309,18 @@
 		height: 100%;
 		vertical-align: middle;
 	}
-
+.header2{
+	background: #FFFFFF;
+}
 	.header2 p {
 		height: 1.45rem;
 		line-height: 1.45rem;
 		font-size: 0.35rem;
 		padding-left: 0.5rem;
 	}
-
+.header3{
+	background: #FFFFFF;
+}
 	.header2 i {
 		font-size: 0.4rem;
 	}
@@ -402,7 +408,7 @@
 	}
 
 	.j_pp {
-		content: "\54C1\724C";
+		content: "\54C1\724C ";
 		display: inline-block;
 		font-size: 0.5rem;
 		line-height: 0.6rem;

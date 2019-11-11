@@ -17,7 +17,7 @@
 		<lunbo></lunbo>
 		<p class="iconfont icon-dianpu"><span class="j_sj">附近商家</span></p>
 		<!--下面20条数据-->
-		<div style="padding-bottom: 1.25rem;">
+		<div style="padding-bottom: 1.25rem;background: #FFFFFF;">
 		<div v-for="(i,$index) in arr" :key="$index" class="j_divd" @click="shopl(i.id)">
 			<div>
 				<img :src="'//elm.cangdu.org/img/'+i.image_path" alt="" />
@@ -107,11 +107,16 @@
 	
 	.j_div p .j_sj {
 		padding-left: 0.5rem;
+		background: #FFFFFF;
 	}
 	
-	.j_div p {
-		margin-bottom: 0.5rem;
+	.j_div .icon-dianpu {
 		padding-left: 0.5rem;
+		background: #FFFFFF;
+		margin-top: 0.75rem;
+		margin-bottom: 0;
+		padding-bottom: 1rem;
+		padding-top: 0.7rem;
 	}
 	
 	.j_tdiv {

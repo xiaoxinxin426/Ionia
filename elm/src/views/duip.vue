@@ -17,7 +17,7 @@
 				<input v-model="kam" placeholder='请输入6位卡密' type="text" style="width: 16rem;height: 2rem;padding-left:0.7rem;border: none;outline: none;">
 			</div>
 			<p class='duihuan' :class="[inx==1?'j_vb':'duihuan']" @click="fnc">兑换</p>
-			<h3>-温馨提示-</h3>
+			<h3 class="k_mn">-温馨提示-</h3>
 			<p class="sm">新兑换的会员服务，权益以「会员说明」为准。</p>
 			<p class="sm">月卡:30次减免配送费。</p>
 			<p class="sm">季卡:90次减免配送费。</p>
@@ -70,7 +70,7 @@
 		padding-left: 0.95rem;
 	}
 	
-	h3 {
+	.k_mn {
 		text-align: center;
 		font-weight: 400;
 		font-size: .65rem;

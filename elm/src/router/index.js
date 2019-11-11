@@ -34,6 +34,12 @@ import sjq from '../views/sjq.vue'
 import buy from '../views/buy.vue'
 import duip from '../views/duip.vue'
 import jilu from '../views/jilu.vue'
+import jies from '../views/jies.vue'
+import xshouh from '../views/xshouh.vue'
+import tianjx from '../views/tianjx.vue'
+import so from '../views/so.vue'
+import remak from '../views/remak.vue'
+import fap from '../views/fap.vue'
 
 Vue.use(VueRouter)
 
@@ -200,6 +206,28 @@ const routes = [{
 				component:sjq
 			}
 		]
+	},
+	{
+		path:'/jies',
+		component:jies,
+		children:[{
+			path:'xshouh',
+			component:xshouh,
+			children:[{
+				path:'tianjx',
+				component:tianjx,
+				children:[{
+					path:'so',
+					component:so
+				}]
+			}]
+		},{
+			path:'remak',
+			component:remak
+		},{
+			path:'fap',
+			component:fap
+		}]
 	}
 ]
 
