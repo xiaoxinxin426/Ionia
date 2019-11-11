@@ -191,6 +191,7 @@
 		border-radius: 0.25rem;
 		margin: 0 2.5%;
 		color: #fff;
+		margin-top: 2rem;
 	}
 	
 	.wen {

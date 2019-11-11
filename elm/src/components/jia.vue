@@ -1,6 +1,6 @@
 <template>
 	<div style="float: right;">
-		<button @click="btn1" style="font-size: 20px;padding: 5px 10px;">-</button>
+		<button @click="btn1" style="font-size: 20px;padding: 5px 12px;">-</button>
 		<input type="text" v-model="num" style="width: 10px;height: 40px;border: none;margin: 0 10px;" />
 		<button @click="btn2" style="font-size: 20px;padding: 5px 10px;">+</button>
 	</div>
@@ -34,5 +34,14 @@
 </script>
 
 <style>
-
+*{
+	margin: 0;
+	padding: 0;
+}
+button{
+	background: blue;
+	border: none;
+	color: white;
+	border-radius: 50%;
+}
 </style>

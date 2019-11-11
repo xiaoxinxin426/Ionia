@@ -33,7 +33,7 @@
 			账号绑定
 		</div>
 		<div class="j_k" style="border-bottom: solid 0.025rem #CCCCCC;" @click="fn">
-			<h2 class="iconfont icon-shouji" style="color: #0073FF;"><span style="color: #666;">手机</span></h2>
+			<h2 class="iconfont icon-shouji" style="color: #0073FF;"><span style="color: #666;"  @click="type=true">手机</span></h2>
 			<div>
 				<span>></span>
 			</div>
@@ -52,15 +52,25 @@
 			退出登陆
 		</div>
 		<router-view></router-view>
+		<!---->
+			<a_t v-if="type" @type='an'>
+				<p slot="cz">确定</p>
+			</a_t>
+		<!---->
 	</div>
 </template>
 <script>
 	import h_nav from './../components/h_nav.vue'
+	import a_t from './../components/alert.vue'
 	export default {
+	
 		components: {
-			h_nav
+			h_nav,a_t
 		},
 		methods: {
+				an(a){
+				this.type=a
+			},
 			go() {
 				location.href = "#/fujin/wode"
 			},
@@ -98,7 +108,7 @@
 				location.href = '#/login'
 			},
 			fn() {
-				alert('请在手机APP中设置')
+				// alert('请在手机APP中设置')
 			},
 			shouh() {
 				location.href = '#/users/shouh'
@@ -106,6 +116,7 @@
 		},
 		data() {
 			return {
+				type:false,
 				names: localStorage.name,
 				img_url: localStorage.img_url
 			}
