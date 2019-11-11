@@ -6,7 +6,7 @@
 		</div>
 		<h3 v-if="arr.length">商家</h3>
 		<div style="background: #FFFFFF;" v-if="inx == 2">
-		<div class="j_plist" v-for="(i,$index) in arr" :key="$index">
+		<div class="j_plist" v-for="(i,$index) in arr" :key="$index" @click="shopl(i.id)">
 			<div>
 				<img :src="'//elm.cangdu.org/img/'+i.image_path" alt="" style="width: 100%;height: 100%;display: block;"/>
 			</div>
@@ -53,6 +53,9 @@
 					this.inx=2
 				}
 			},
+			shopl(i){
+				location.href=`#/shoplist/${i}`
+			}
 		}
 	}
 </script>

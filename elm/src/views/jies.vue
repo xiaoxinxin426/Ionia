@@ -57,7 +57,7 @@
 		</div>
 		<div class="zhifu">
 			<p>待支付 ￥<span>{{totalPrice+num+4}}</span></p>
-			<span class="xiadan">确认下单</span>
+			<span class="xiadan" @click="fnk">确认下单</span>
 		</div>
 		<mt-popup v-model="popupVisible" position="bottom" style="z-index: 2;bottom: 0;">
 			<div class="j_moh">
@@ -95,6 +95,9 @@
 			},
 			tiaok(){
 				location.href = "#/jies/fap"
+			},
+			fnk(){
+				location.href = "#/vip/buy"
 			}
 		},
 		mounted() {
