@@ -8,7 +8,7 @@
 				{{this.$store.state.titles}}
 			</div>
 		</h_nav>
-		<div style="padding: 0.5rem;font-size: 1rem;font-size: 0.7rem;">
+		<div style="padding: 0.5rem;font-size: 1rem;font-size: 0.7rem;max-height: 26.25rem;overflow:auto;">
 			{{this.$store.state.cons}}
 		</div>
 	</div>

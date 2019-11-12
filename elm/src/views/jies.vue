@@ -12,7 +12,16 @@
 			</div>
 		</h_nav>
 		<div class="j_nck" @click="gos">
-			<p>请添加一个收获地址<span>></span></p>
+			<p v-if="idk==2" class="g_km">请添加一个收获地址<span>></span></p>
+				<div style="overflow: hidden;padding-left: .5rem;" v-if="idk==1">
+					<div style="float: left;width: 5%;text-align: left;">
+						<span class="iconfont icon-location1" style="color: #3190e8;"></span>
+					</div>
+					<div style="width: 80%;float: left;padding-top: 0.75rem;padding-left: 0.5rem;">
+						<p class="j_ytr"><span>{{this.$store.state.addx.name}}</span><span>先生</span><span>{{this.$store.state.addx.phone}}</span></p>
+						<p class="j_hnm"><span>{{this.$store.state.addx.tag}}</span><span>{{this.$store.state.addx.address_detail}}</span></p>
+					</div>
+				</div>
 		</div>
 		<div class="head">
 			<p>送达时间</p>
@@ -30,7 +39,6 @@
 		<div class="result">
 			<div style="margin-bottom: 20px;"><img :src="img_url"><span>{{names}}</span></div>
 			<div class="list">
-				<!--{{this.$store.state.numb}}-->
 				<ul v-for="(a,index) in arr" :key='index'>
 					<li>
 						<p>{{a.name}}</p><span>x{{a.__v}}</span><span v-for="(m,index) in a.specfoods" :key="index">{{m.price}}</span>
@@ -93,10 +101,10 @@
 			tiaoz() {
 				location.href = "#/jies/remak"
 			},
-			tiaok(){
+			tiaok() {
 				location.href = "#/jies/fap"
 			},
-			fnk(){
+			fnk() {
 				location.href = "#/vip/buy"
 			}
 		},
@@ -105,6 +113,13 @@
 			for(var i = 0; i < this.arr.length; i++) {
 				this.num += this.arr[i].__v
 			}
+			localStorage.idk=2
+		},
+		activated() {
+			this.axios.get('http://elm.cangdu.org/v1/users/44104/addresses').then((data) => {
+				this.arr = data.data
+				console.log(this.arr)
+			})
 		},
 		data() {
 			return {
@@ -113,7 +128,8 @@
 				arr: [],
 				num: 0,
 				popupVisible: false,
-				texts: this.$store.state.beiz
+				texts: this.$store.state.beiz,
+				idk: localStorage.idk
 			}
 		},
 		computed: {
@@ -124,6 +140,40 @@
 </script>
 
 <style>
+	.j_ytr{
+		line-height: 0;
+	}
+	.j_hnm{
+		line-height: 0;
+	}
+	.j_ytr span {
+		line-height: 1rem;
+		font-size: .7rem;
+		margin-left: 0.3rem;
+	}
+	
+	.j_ytr span:nth-of-type(1) {
+		font-size: 1rem;
+		color: #333;
+		margin-left: 0;
+		font-weight: bold;
+	}
+	
+	.j_hnm span:nth-of-type(1) {
+		font-size: .5rem;
+		color: #fff;
+		border-radius: .15rem;
+		background-color: #ff5722;
+		height: .6rem;
+		line-height: .6rem;
+		padding: 0 .2rem;
+		margin-right: .3rem;
+	}
+	
+	.j_hnm:nth-of-type(2) {
+		font-size: .6rem;
+		color: #777;
+	}
 	.j_moh {
 		width: 100%;
 		min-height: 10rem;
@@ -387,12 +437,12 @@
 		padding: 0 0.75rem 0 1rem;
 	}
 	
-	.j_nck p {
+	.j_nck .g_km {
 		font-size: .7rem;
 		color: #333;
 	}
 	
-	.j_nck p span {
+	.j_nck .g_km span {
 		float: right;
 		font-size: 1rem;
 	}

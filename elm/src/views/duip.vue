@@ -18,11 +18,11 @@
 			</div>
 			<p class='duihuan' :class="[inx==1?'j_vb':'duihuan']" @click="fnc">兑换</p>
 			<h3 class="k_mn">-温馨提示-</h3>
-			<p class="sm">新兑换的会员服务，权益以「会员说明」为准。</p>
-			<p class="sm">月卡:30次减免配送费。</p>
-			<p class="sm">季卡:90次减免配送费。</p>
-			<p class="sm">年卡:360次减免配送费。</p>
-			<p class="sm" style="padding-right: 1.5rem;">＊仅限蜂鸟专送订单，每日最多减免3单，每单最高减免4元（一个月按31天计算）</p>
+			<p class="smg">新兑换的会员服务，权益以「会员说明」为准。</p>
+			<p class="smg">月卡:30次减免配送费。</p>
+			<p class="smg">季卡:90次减免配送费。</p>
+			<p class="smg">年卡:360次减免配送费。</p>
+			<p class="smg" style="padding-right: 1.5rem;">＊仅限蜂鸟专送订单，每日最多减免3单，每单最高减免4元（一个月按31天计算）</p>
 		</div>
 	</div>
 </template>
@@ -62,7 +62,7 @@
 	}
 </script>
 <style>
-	.sm {
+	.smg {
 		font-size: .5rem;
 		color: #aaa;
 		line-height: .8rem;

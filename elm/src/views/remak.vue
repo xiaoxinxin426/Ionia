@@ -26,7 +26,9 @@
 
 			<div class="cu">
 				<ul>
-					<li @click="fnc(i,$index)" :class="[inxs==$index?'j_kln':'']" v-for="(i,$index) in are" :key="$index">{{i}}</li>
+					<li @click="inxs=1" :class="[inxs==1?'j_kln':'']">不要洋葱</li>
+					<li @click="inxa=2" :class="[inxa==2?'j_kln':'']">多点醋</li>
+					<li @click="inxt=3" :class="[inxt==3?'j_kln':'']">多点葱</li>
 				</ul>
 			</div>
 			<div class="bing">
@@ -64,8 +66,9 @@
 				inxd: '',
 				inxb: '',
 				arr: ['去冰', '少冰'],
-				are: ['不要洋葱', '多点醋', '多点葱'],
-				arf: ['不要辣', '少点辣', '多点辣']
+				arf: ['不要辣', '少点辣', '多点辣'],
+				inxa:'',
+				inxt:''
 			}
 
 		},
@@ -76,10 +79,6 @@
 			fn(i, b) {
 				this.$store.commit('beiz', i)
 				this.inx = b
-			},
-			fnc(i, b) {
-				this.$store.commit('beiz', i)
-				this.inxs = b
 			},
 			fnq(i, b) {
 				this.$store.commit('beiz', i)

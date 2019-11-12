@@ -22,7 +22,8 @@ var store = new Vuex.Store({
 		school: '',
 		numb: [],
 		cityn: '',
-		beiz:[]
+		beiz:[],
+		addx:''
 	},
 	mutations: {
 		addPri(state, i) {
@@ -45,13 +46,16 @@ var store = new Vuex.Store({
 		},
 		beiz(state,i){
 			state.beiz.push(i)
+		},
+		addx(state,i){
+			state.addx=i
 		}
 	},
 	getters: {
 		totalPrice(state) {
 			if(state.numb == '') {
-				t = ''
-				return
+				t = 0
+				return t
 			} else {
 				var t = 0
 				state.numb.forEach(el => {

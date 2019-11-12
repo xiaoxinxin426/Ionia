@@ -23,7 +23,6 @@
 			</div>
 		</div>
 	</div>
-	
 </template>
 <script>
 import h_nav from './../components/h_nav.vue'

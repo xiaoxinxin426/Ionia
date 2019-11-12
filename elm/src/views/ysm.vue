@@ -8,7 +8,7 @@
 				红包说明
 			</div>
 		</h_nav>
-		<div class="j_olm">
+		<div class="j_olm" style="max-height: 26.25rem;overflow:auto;">
 			<h3>Q1: 怎么获得红包？</h3>
 			<p>通过邀请好友获得</p>
 			<p>在下单返红包的商家下单获得</p>

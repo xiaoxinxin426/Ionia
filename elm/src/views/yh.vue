@@ -30,43 +30,19 @@
 							<span>3</span>个红包即将到期
 						</p>
 					</div>
-					<div class="hb">
+					<div class="hb" v-for="i in are" :key="i.id">
 						<div class="numb">
-							<p>￥1.0</p>
-							<span>满20元可用</span>
+							<p>￥{{i.amount}}</p>
+							<span>{{i.description_map.sum_condition}}</span>
 						</div>
 						<div class="time">
-							<p>分享红包</p>
-							<span>2099年13月32日过期</span>
-							<span>限收货手机号为：121212121</span>
-							<h4>剩3日</h4>
+							<p>{{i.name}}</p>
+							<span>{{i.description_map.validity_periods}}</span>
+							<span>{{i.description_map.phone}}</span>
+							<h4>{{i.description_map.validity_delta}}</h4>
 						</div>
 					</div>
-					<div class="hb">
-						<div class="numb">
-							<p>￥2.0</p>
-							<span>满20元可用</span>
-						</div>
-						<div class="time">
-							<p>分享红包</p>
-							<span>2099年13月32日过期</span>
-							<span>限收货手机号为：121212121</span>
-							<h4>剩3日</h4>
-						</div>
-					</div>
-					<div class="hb">
-						<div class="numb">
-							<p>￥4.5</p>
-							<span>满20元可用</span>
-						</div>
-						<div class="time">
-							<p>分享红包</p>
-							<span>2099年13月32日过期</span>
-							<span>限收货手机号为：121212121</span>
-							<h4>剩3日</h4>
-						</div>
-
-					</div>
+					
 					<div class="xianzhi">
 						<p>限品类：快餐便当、特色菜系、小吃夜宵、甜品饮品、异国料理</p>
 					</div>
@@ -139,8 +115,15 @@
 		data() {
 			return {
 				isindex: 0,
-				arr: ["红包", "商家代金券"]
+				arr: ["红包", "商家代金券"],
+				are:''
 			};
+		},
+		created(){
+			this.axios.get('http://elm.cangdu.org/promotion/v2/users/44104/hongbaos?limit=20&offset=0').then((data)=>{
+				console.log(data.data)
+				this.are = data.data
+			})
 		}
 	};
 </script>
