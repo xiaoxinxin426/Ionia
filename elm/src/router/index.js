@@ -40,7 +40,6 @@ import tianjx from '../views/tianjx.vue'
 import so from '../views/so.vue'
 import remak from '../views/remak.vue'
 import fap from '../views/fap.vue'
-import shop_msg from '../views/shop_msg.vue'
 
 Vue.use(VueRouter)
 
@@ -228,10 +227,6 @@ const routes = [{
 		},{
 			path:'fap',
 			component:fap
-		},
-		{
-			path: '/shop_msg/:id',
-			component: shop_msg
 		}]
 	}
 ]
