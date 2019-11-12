@@ -145,6 +145,11 @@
 		</div>
 
 		<div class="j_foot"  v-if="inx==1">
+			<p style="flex:1;background:#000">
+				<span style="float:left;width:2rem;height:2rem;background:blue;border-radius:50%;margin-top:-0.5rem;margin-left:1rem;">
+					<img style="width:100%;height:100%;border-radius:50%"  src="http://img5.imgtn.bdimg.com/it/u=2974139780,1314840459&fm=26&gp=0.jpg">
+				</span>
+			</p>
 			<div @click="tiao">
 				<p>￥<span>{{totalPrice}}</span></p>
 				<p>配送费￥5</p>
@@ -546,7 +551,7 @@
 	
 	.j_foot div:nth-of-type(1) {
 		flex: 2;
-		text-align: center;
+		text-align: left;
 		background: #000000;
 		color: #FFFFFF;
 	}

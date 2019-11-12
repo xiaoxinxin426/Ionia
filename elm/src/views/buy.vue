@@ -10,7 +10,7 @@
 		</h_nav>
 		<div class="sj">
 			<p class="zf">剩余支付时间</p>
-			<p>{{minutes}}:{{seconds}}</p>
+			<p style="font-size:2rem;margin-top:0.5rem;">00:{{minutes}}:{{seconds}}</p>
 		</div>
 		<div class="zffs">选择支付方式</div>
 		<div class="zfb" v-for="(i,$index) in arr" :key="$index">
@@ -18,20 +18,27 @@
 				<img :src="i.img_url" alt="" style="width: 2rem;height: 2rem;" />
 			</div>
 			<div class="wen">{{i.name}}</div>
-			<span class="iconfont icon-duihao" @click="fnc($index)" :class="[inx==$index?'f_oi':'']"></span>
+			<span style="font-size:1.2rem;" class="iconfont icon-duihao" @click="fnc($index)" :class="[inx==$index?'f_oi':'']"></span>
 		</div>
 
 		<div class="btnn" @click="fn">在线支付</div>
+			<!---->
+			<a_t v-if="type" @type='an'>
+				<p slot="cz">暂不开放支付功能</p>
+			</a_t>
+		<!---->
 	</div>
 </template>
 <script>
 	import h_nav from './../components/h_nav.vue'
+	import a_t from './../components/alert.vue'
 	export default {
 		components: {
-			h_nav
+			h_nav,a_t
 		},
 		data() {
 			return {
+				type:false,
 				arr: [{
 						img_url: '		data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHgAAAB4CAMAAAAOusbgAAAAw1BMVEUAAAAA0A0A0A0A0A0A0A4A0Q4A0xIA5ikA0Q4A0A4A0A4A0Q0A0Q8A0w4A0hIA1xQAzw4A0A4A0A0Azw4A0A4A0A0Azw8Azw8Azw4AzxAA0Q4Azw3///8I0BQT0h4Z1CT6/vrV99fy/PK38rpi4mqO6pNE3E0v2DnP9tHE9Mem7qqC54go1zP2/fad7aJ75oFP3lfe+N/a+Nvv/O/r++zj+uTI9cqF6Isi1S3o+um98sCW65s920au77Jc4GQ22UBq43GiLjBXAAAAG3RSTlMA68X64EkqBlW6pJljNhwT9e/Sy7Ksi3trQDhS7vz/AAAEfElEQVRo3rzWWQKDIAwE0CQgoFC1m13m/vfsAdSKQnw3yMx8hHbzLry6Vm6WjWF7k7Z7BedJl3s/LRbZ59uRjiF1jL+4SwNV5sPDIIN5hJqpX+IV2a7xQnV8WuzUfqhcIzhAmtKQ7zjoXhL4EFEgHp54YhThREf0gmLSHxgVowLeOzI/oZLJl8esH7ezqMg6yvRlVMXfzFmNqGzMmlgwqM6EjHsNFJhms98RKsaNnh1DCTv6o7dQY3ta5QWKxNOaCaqm1UFDWbNSMEMZL9csUCe0IOEEiWYGxgl4/odFnCLO/tgfr3W2kzAQhQFYA0owMcYtav4zTEs3lhawVfbF938qO2QooPQMw0W/u7n6M5M5Cyryd+t9RkWeKy7hvZuKSokvqQ9U6ONqr4kKNe2/tAj7q26aOTO32/uJcKl7uxoW/jyhQ+3BEhxzLTceYdTqz+i/1McFHhu7vRJGfptOc0PY2+2cLzCQHpXrCdh60eOhBl70RZyOhKXag56HxlzeLIZiPR3vwIq/yORTws7dlXINjuiQlvWCzmFa0B8Xry1g5Xq7w4M1JM2VxUnxVNaEtAnsqO3+HZzYIW0JpbikhJLqUzKFlfc8+BWcBWkOtgJ9/MZWj7QVrLzmwXUwREY78ijJEVC6pDkt2Kjn/RKcERUC5KYJaX3kQir4sNIw/K0B7Q020/Xs4LjcDBPKJR1vMAksg28NjXpuLOEgFBAyCsOoZdeu38BJieWuIUZFdSfeMMKZ3gx9KyFG24ecZHRkPDq3dzXBaXPXjUXgnHj8EGdoGvbLTyrlicilkxbinF3zCRyPyozFyCl9CwmTJ75/YEgl0pbKvTy5bphNMZVYbhxiuMI4n2pgjcv2HZd2MjohAK/2y5zZ7TQIBUE4atLWqjEaE01mu4dS+oMgrQoWi619/6cyRn4CIpO0aeW75eLAsjtndpcdvJA6LONJimvwEWavE5txHhJ2MOvHR/UZndeZX2RCNACQqcmKhZqN1ExdJJ2NZCgAJ/340kUZk+S6BaEue7WIgwcM3FQyfUDD/AEpp1MwHKkSIZScVZILericR8XvIAJyDsrC/iUewhkSyeyD41eUc+0L54lcEvcAR9/KVWyEY5NrsYcqvKhWsPYNdS+1PgStCDWehRIQ69NFCk1se7wcpZ5LE6EsiNnLFIRZL3upAKDTyWbr6KcwIqIf34aeYuTVU5QYCsGhhv4BlM1cUWEizbi8helgJ4Jm16topNPQphJ01lTDxOaeNDTmFB3+fS4zmv29RvPGlXqiKQiXZPjCmFu7DWPOrsm4iTJd1yY0444O2Dhx8l76uz+mhNArRor74G+D0Sx6cR+9iapn81b5pnuIRYhJLDaWuDjQJiQOiJu/+v9B+ZFXA21Yhhx1/dOOhdcRV3xtWWp+dW8HRAAAIAgD+7e2gwI3zLFfLONywnUm1bNwQoBj0ACKndzwkJGXVTEhmY/OcbGgh0eyQaiewPLRr5Y5d8BuGWVvwvuCXaFv0LgsKb0TzmY76h+tNmvZg5lOvA8OU9y6bDob0foAAAAASUVORK5CYII=',
 						name: '微信',
@@ -47,11 +54,15 @@
 			}
 		},
 		methods: {
+			an(a){
+				this.type=a
+			},
 			go() {
 				this.$router.go(-1)
 			},
 			fn() {
-				alert('当前环境无法支付,请打开官方APP进行付款')
+				this.type = true
+				// alert('当前环境无法支付,请打开官方APP进行付款')
 				setTimeout(() => {
 					location.href = "#/fujin/dingdan"
 				}, 1000)
@@ -79,7 +90,10 @@
 			}
 		},
 		mounted() {
+			// this.add()
+				this.an()
 			this.add()
+			this.type = true
 		},
 		watch: {
 			second: {
