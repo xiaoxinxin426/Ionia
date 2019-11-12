@@ -51,16 +51,16 @@
 				arr: ''
 			}
 		},
-		activated() {
-			this.axios.get('http://elm.cangdu.org/v1/users/44104/addresses').then((data) => {
+		watch:{
+			'$rout;pe.path':function(a){
+				console.log(a)
+				if(a=='/jies/xshouh'){
+					this.axios.get('http://elm.cangdu.org/v1/users/44104/addresses').then((data) => {
 				this.arr = data.data
 				console.log(this.arr)
 			})
-		},
-		created() {
-			this.axios.get('http://elm.cangdu.org/v1/users/44104/addresses').then((data) => {
-				this.arr = data.data
-			})
+				}
+			}
 		}
 
 	}

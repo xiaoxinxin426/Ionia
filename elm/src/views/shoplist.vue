@@ -33,15 +33,16 @@
 			</div>
 		</div>
 
-		<div class="j_foot" @click="tiao">
-			<div>
-				<p>￥{{totalPrice}}</p>
+		<div class="j_foot">
+			<div @click="tiao">
+				<p>￥<span>{{totalPrice}}</span></p>
 				<p>配送费￥5</p>
 			</div>
-			<div @click="got">
-				结算
+			<div :class="[totalPrice>=20?'k_lm':'k_ln']">
+				<p v-if="inde==1||totalPrice>=20" @click="got">结算</p>
+				<p v-if="inde==2">还差￥20起送</p>
 			</div>
-			
+
 		</div>
 		<mt-popup v-model="popupVisible" position="bottom" style="z-index: 2;bottom: 2rem;">
 			<div class="j_shops">
@@ -52,7 +53,6 @@
 				</div>
 			</div>
 		</mt-popup>
-		
 	</div>
 </template>
 
@@ -71,7 +71,9 @@
 				ids: this.$route.params.id,
 				maod: '',
 				are: '',
-				popupVisible: false
+				popupVisible: false,
+				inde: 2,
+				km:''
 			}
 		},
 		created() {
@@ -83,13 +85,18 @@
 		methods: {
 			go() {
 				this.$router.go(-1)
+				this.km=1
 			},
 			fnc(i, b) {
 				this.indexs = i
 				this.maod = b
 			},
 			got() {
-				location.href = '#/jies'
+				
+					setTimeout(() => {
+						location.href = '#/jies'
+					}, 500)
+				
 			},
 			tiao() {
 				this.popupVisible = true
@@ -122,7 +129,6 @@
 		computed: {
 			...mapState(['numb']),
 			...mapGetters(['totalPrice'])
-			
 		},
 	}
 </script>
@@ -266,16 +272,26 @@
 		background: #000000;
 		color: #FFFFFF;
 	}
-	
-	.j_foot div:nth-of-type(2) {
+	.k_lm{
 		flex: 1;
 		text-align: center;
 		background: #4cd964;
 		color: #FFFFFF;
 		line-height: 1.5rem;
 		padding-top: .3rem;
+		position: relative;
+		z-index: 999;
 	}
-	
+	.k_ln{
+		background: #535356;
+		flex: 1;
+		text-align: center;
+		color: #FFFFFF;
+		line-height: 1.5rem;
+		padding-top: .3rem;
+		position: relative;
+		z-index: 999;
+	}
 	.j_lpl h6:nth-of-type(4) span {
 		color: rgb(241, 136, 79);
 		font-size: .3rem;

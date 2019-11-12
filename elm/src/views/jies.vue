@@ -12,8 +12,8 @@
 			</div>
 		</h_nav>
 		<div class="j_nck" @click="gos">
-			<p v-if="idk==2" class="g_km">请添加一个收获地址<span>></span></p>
-				<div style="overflow: hidden;padding-left: .5rem;" v-if="idk==1">
+			<!--<p class="g_km">请添加一个收获地址<span>></span></p>-->
+				<div style="overflow: hidden;padding-left: .5rem;">
 					<div style="float: left;width: 5%;text-align: left;">
 						<span class="iconfont icon-location1" style="color: #3190e8;"></span>
 					</div>

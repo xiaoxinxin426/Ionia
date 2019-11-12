@@ -69,6 +69,7 @@
 				})
 				setTimeout(()=>{
 						location.href='#/jies/xshouh'
+						window.onload()
 					},1000)
 				}else{
 					alert('请将数据填写完整')
