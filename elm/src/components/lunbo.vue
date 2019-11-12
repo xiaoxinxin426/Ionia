@@ -1,5 +1,5 @@
 <template>
-	<div style="margin-top: 1rem;">
+	<div>
 		<div>
 			<mt-swipe :auto="0" class="z_mt-swipe">
 				<mt-swipe-item>
@@ -113,6 +113,7 @@
 		text-align: center;
 		line-height: 1rem;
 		height: 1rem;
+		color: black;
 		/* background: red; */
 	}
 </style>
