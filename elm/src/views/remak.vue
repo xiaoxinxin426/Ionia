@@ -43,7 +43,7 @@
 			</div>
 			<div class="top_2">
 				<div class="la">
-					<input type="text" placeholder="请输入备注内容(可不填)" v-model="values" @click="op">
+					<input style="font-size:0.7rem;" type="text" placeholder="请输入备注内容(可不填)" v-model="values" @click="op">
 				</div>
 			</div>
 			<div class="tijiao" @click="op">
@@ -111,7 +111,7 @@
 	.top {
 		width: 100%;
 		height: auto;
-		background: #fff;
+		background: white;
 		position: relative;
 		padding-bottom: 40px;
 	}
@@ -119,6 +119,7 @@
 	.top_1 {
 		width: 100%;
 		height: auto;
+		background: white;
 	}
 	
 	.top_1 p {
@@ -131,6 +132,8 @@
 		width: 100%;
 		height: auto;
 		padding-left: 0.9375rem;
+		background: white;
+		color: black;
 	}
 	
 	.top_2 ul {
@@ -162,7 +165,7 @@
 		line-height: 1.5rem;
 		position: absolute;
 		right: 3rem;
-		top: 2.6rem;
+		top: 2rem;
 	}
 	
 	.xc p {

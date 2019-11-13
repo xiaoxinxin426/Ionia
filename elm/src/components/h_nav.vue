@@ -25,8 +25,7 @@
 		position: relative;
 		top: 0;
 		left: 0;
-		z-index: 2
-		;
+		z-index: 2;
 		width: 100%;
 		height: 2.125rem;
 		line-height: 2.125rem;
@@ -40,11 +39,11 @@
 	
 	#h_nav #left {
 		flex: 1;
-		margin-left: 1.25rem;
+		margin-left: 0.5rem;
 	}
 	
 	#h_nav #title {
-		flex: 4;
+		flex: 6;
 		text-align: center;
 	}
 	

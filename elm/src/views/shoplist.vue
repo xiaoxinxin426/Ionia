@@ -1,13 +1,15 @@
 <template>
 	<div style="background: #F5F5F5;width: 100%;overflow: hidden;">
-		<h_nav>
+		<!-- <h_nav>
 			<div slot="left">
 				<i class="iconfont icon-toright" @click="go"></i>
 			</div>
-		</h_nav>
+		</h_nav> -->
+		
 		
 		<div v-if="shop">
-			<div class="top_1">
+			<div class="top_1" style="padding-top:0.5rem;">
+					<i class="iconfont icon-toright" @click="go" style="z-index:9"></i>
 				<div class="no1">
 					<img :src="'//elm.cangdu.org/img/'+shop.image_path" />
 				</div>
@@ -64,14 +66,14 @@
 			<div class="s_con">
 				<div class="s_lm">
 					<div v-for="(i,index) in arr" @click="fnc(index,i.name)" :key="index">
-						<p :class="[indexs==index?'s_act':'']">
+						<p :class="[indexs==index?'s_act':'']" @click="btn(i.id)">
 							{{i.name}}
 						</p>
 					</div>
 				</div>
-				<div>
+				<div  style="max-height: 30rem;overflow: auto;">
 					<div v-for="(i,index) in arr" @click="indexs=index" :key="index" style="padding-bottom: 1rem;border-bottom: solid 1px #f5f5f5;">
-						<p>{{i.name}}<span>{{i.description}}</span><span>></span></p>
+						<p :id="i.id">{{i.name}}<span>{{i.description}}</span><span>></span></p>
 						<div class="s_kn" v-for="(a,$index) in i.foods" :key="$index">
 							<div>
 								<img :src="'//elm.cangdu.org/img/'+a.image_path" alt="" style="width: 2.15rem;height: 2.15rem;" />
@@ -146,7 +148,7 @@
 
 		<div class="j_foot"  v-if="inx==1">
 			<p style="flex:1;background:#000">
-				<span style="float:left;width:2rem;height:2rem;background:blue;border-radius:50%;margin-top:-0.5rem;margin-left:1rem;">
+				<span style="float:left;width:2rem;height:2rem;background:#F4F4F4;border-radius:50%;margin-top:-0.5rem;margin-left:1rem;">
 					<img style="width:100%;height:100%;border-radius:50%"  src="http://img5.imgtn.bdimg.com/it/u=2974139780,1314840459&fm=26&gp=0.jpg">
 				</span>
 			</p>
@@ -173,12 +175,12 @@
 </template>
 
 <script>
-	import h_nav from './../components/h_nav.vue'
+	// import h_nav from './../components/h_nav.vue'
 	import { mapState, mapGetters } from 'vuex'
 	import jia from "./../components/jia.vue"
 	export default {
 		components: {
-			jia,h_nav
+			jia
 		},
 		data() {
 			return {
@@ -203,6 +205,10 @@
 			}
 		},
 		methods: {
+			btn(e) {
+    let anchorElement = document.getElementById(e);
+    if(anchorElement) { anchorElement.scrollIntoView(); }
+   },
 			go() {
 				this.$router.go(-1)
 				this.km=1

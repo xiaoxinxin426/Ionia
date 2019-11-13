@@ -14,12 +14,19 @@
 		<div class="j_nck" @click="gos">
 			<!--<p class="g_km">请添加一个收获地址<span>></span></p>-->
 			<div style="overflow: hidden;padding-left: .5rem;">
-				<div style="float: left;width: 5%;text-align: left;">
-					<span class="iconfont icon-location1" style="color: #3190e8;"></span>
+				<div style="float: left;width: 5%;text-align: left;margin-right:0.5rem">
+					<span class="iconfont icon-location1" style="color: #3190e8;font-size:1rem"></span>
 				</div>
 				<div style="width: 80%;float: left;padding-top: 0.75rem;padding-left: 0.5rem;">
-					<p class="j_ytr"><span>{{this.$store.state.addx.name}}</span><span>先生</span><span>{{this.$store.state.addx.phone}}</span></p>
-					<p class="j_hnm"><span>{{this.$store.state.addx.tag}}</span><span>{{this.$store.state.addx.address_detail}}</span></p>
+					<p class="j_ytr" style="overflow:hidden">
+						<span>{{this.$store.state.addx.name}}</span>
+						<span>先生</span>
+						<span>{{this.$store.state.addx.phone}}</span>
+					</p>
+					<p class="j_hnm">
+						<span>{{this.$store.state.addx.tag}}</span>
+						<span>{{this.$store.state.addx.address_detail}}</span>
+					</p>
 				</div>
 			</div>
 		</div>
@@ -46,17 +53,17 @@
 				</ul>
 				<ul>
 					<li>
-						<p>餐盒<span></span><span style="float: right;margin-right: 30px;">￥{{num}}</span></p>
+						<p>餐盒<span></span><span style="float: right;margin-right: 30px;font-size:0.5rem;">￥{{num}}</span></p>
 
 					</li>
 					<li>
-						<p>配送费<span></span><span style="float: right;margin-right: 30px;">￥4</span></p>
+						<p>配送费<span></span><span style="float: right;margin-right: 30px;font-size:0.5rem">￥4</span></p>
 					</li>
 				</ul>
 			</div>
 			<div class="dingd">
-				<p>订单<span>￥{{totalPrice+num+4}}</span></p>
-				<p>待支付<span>￥{{totalPrice+num+4}}</span></p>
+				<p style="font-size:0.7rem;">订单<span style="font-size:0.7rem">￥{{totalPrice+num+4}}</span></p>
+				<p style="font-size:0.7rem;">待支付<span style="font-size:0.7rem;">￥{{totalPrice+num+4}}</span></p>
 			</div>
 		</div>
 		<div class="remark">
@@ -185,7 +192,7 @@
 		font-size: .5rem;
 		color: #fff;
 		border-radius: .15rem;
-		background-color: #ff5722;
+		/* background-color: #ff5722; */
 		height: .6rem;
 		line-height: .6rem;
 		padding: 0 .2rem;
@@ -231,7 +238,8 @@
 
 	.zhifu {
 		display: flex;
-		line-height: 50px;
+		/* line-height: 50px; */
+		line-height: 2.3rem;
 		font-size: .75rem;
 		color: #fff;
 		position: fixed;
@@ -380,7 +388,7 @@
 
 	.cont .cont-item1 span:nth-of-type(1) {
 		flex: 6;
-		font-size: 14px;
+		font-size: 0.7rem;
 	}
 
 	.cont .cont-item1 p {
@@ -408,12 +416,14 @@
 
 	.cont .cont-item2 span:nth-of-type(1) {
 		flex: 6;
-		color: #666
+		color: #666;
+		font-size: 0.6rem;
 	}
 
 	.cont .cont-item2 span:nth-of-type(2) {
-		flex: 5;
-		font-size: 12px;
+		flex:6;
+		font-size: 0.6rem;
+		text-align: center;
 	}
 
 	.head {
@@ -426,6 +436,8 @@
 
 	.head p {
 		flex: 6;
+		font-size: 0.8rem;
+		font-weight: bold;
 	}
 
 	.head .deliver_time {
@@ -435,6 +447,7 @@
 
 	.head .deliver_time .item1 {
 		margin-bottom: 5px;
+		font-size: 0.6rem;
 	}
 
 	.head .deliver_time .item2 {

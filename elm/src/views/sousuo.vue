@@ -4,11 +4,11 @@
 			<input type="text" placeholder="请输入商家或美食名称" v-model="values" @input="ol"/>
 			<input type="submit" value="提交" @click="fn"/>
 		</div>
-		<h3 v-if="arr.length">商家</h3>
+		<p v-if="arr.length" style="padding:0.5rem;font-size:0.7rem;">商家</p>
 		<div style="background: #FFFFFF;" v-if="inx == 2">
 		<div class="j_plist" v-for="(i,$index) in arr" :key="$index" @click="shopl(i.id)">
 			<div>
-				<img :src="'//elm.cangdu.org/img/'+i.image_path" alt="" style="width: 100%;height: 100%;display: block;"/>
+				<img :src="'//elm.cangdu.org/img/'+i.image_path" alt="" style="width: 80%;height: 80%;display: block;"/>
 			</div>
 			<div>
 				<p>{{i.name}}<span>支付</span></p>
@@ -18,6 +18,13 @@
 		</div>
 		</div>
 		<p v-if="inx==1" class="j_sor">很抱歉！无搜索结果</p>
+		<div v-if="indexs==2" style="background:white">
+			<div  v-for="(i,index) in lists" :key="index" style="padding:0.5rem;overflow:hidden;font-size:0.7rem;">
+				{{i}}
+				<span @click="lm(i)" style="float:right;">X</span>
+			</div>
+		</div>
+		<p @click="qing" v-if="indexs==2" style="background:white;font-size:0.8rem;text-align:center;padding:0.8rem 0">清空历史</p>
 	</div>
 </template>
 
@@ -28,11 +35,15 @@
 				values:'',
 				arr:'',
 				inx:0,
-				names:''
+				names:'',
+				lists:JSON.parse(localStorage.hists || "{}"),
+				list:[],
+				indexs:2
 			}
 		},
 		methods:{
 			fn(){
+				this.indexs=2
 				this.names = localStorage.ncl
 				console.log(this.names)
 				this.axios.get('http://elm.cangdu.org/v4/restaurants?extras[]=restaurant_activity&geohash='+this.names+'&keyword='+this.values+'&type=search').then((data)=>{
@@ -45,6 +56,10 @@
 						this.inx=2
 					}
 				})
+				this.list.push(this.values)
+				for(var a = 0; a < this.list.length; a++) {
+							localStorage.hists = JSON.stringify(this.list)
+				}
 			},
 			ol(){
 				if(this.values==''){
@@ -55,8 +70,24 @@
 			},
 			shopl(i){
 				location.href=`#/shoplist/${i}`
+				
+			},
+			lm(i){
+				console.log(i)
+				for(var a = 0; a < this.lists.length; a++) {
+					if(i==this.lists[a]){
+						this.lists.splice(a,1)
+						// .splice(a,1)
+						localStorage.hists.substring(a)
+					}
+				}
+			},
+			qing(){
+				this.lists=''
+				localStorage.hists=''
+				this.indexs=1
 			}
-		}
+		},
 	}
 </script>
 

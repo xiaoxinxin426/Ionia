@@ -24,21 +24,22 @@
 			<div @click="search()">提交</div>
 		</div>
 		<!-- 搜索结果 arr -->
-		<div class="search_list" v-if="type == true">
+		<div class="search_list" v-if="type == true" style="background:white">
 			<div v-for="(item,index) in arr" :key="index" @click="history(item)">
-				<a :href="'#/fujin/waimai/'+item.geohash" @click="fn(item.geohash)" style="color: #666;">{{item.name}}</a><br />
-				<a :href="'#/fujin/waimai/'+item.geohash" @click="fn(item.geohash)">{{item.address}}</a>
+				<a :href="'#/fujin/waimai/'+item.geohash" @click="fn(item.geohash)" style="color: #666;font-size:0.8rem">{{item.name}}</a><br />
+				<a :href="'#/fujin/waimai/'+item.geohash" @click="fn(item.geohash)" style="font-size:0.5rem">{{item.address}}</a>
 			</div>
 		</div>
 		<!-- 搜索历史 lists/list -->
 		<div class="search_history" v-if="type == false">
 			<div>搜索历史</div>
-			<div style="background: #FFFFFF;">
+			<div style="background: #FFFFFF;padding:0.5rem;">
 				<div v-for="(item,index) in lists" :key="index">
-					<a :href="'#/fujin/waimai/'+item.geohash" @click="fn(item.geohash)" style="color: #666;">{{item.name}}</a><br />
-					<a :href="'#/fujin/waimai/'+item.geohash" @click="fn(item.geohash)">{{item.address}}</a>
+					<a :href="'#/fujin/waimai/'+item.geohash" @click="fn(item.geohash)" style="color: #666;font-size:0.8rem">{{item.name}}</a><br />
+					<a :href="'#/fujin/waimai/'+item.geohash" @click="fn(item.geohash)" style="font-size:0.5rem">{{item.address}}</a>
 				</div>
 			</div>
+			<p @click="qing" v-if="indexs==2" style="background:white;font-size:0.8rem;text-align:center;padding:0.8rem 0">清空所有</p>
 		</div>
 	</div>
 </template>
@@ -56,7 +57,8 @@
 				val: '',
 				list: [], // 这是存放到data里的搜索历史
 				lists: JSON.parse(localStorage.list || "{}"), // 这是存放到浏览器localStorage的搜索历史
-				type: false
+				type: false,
+				indexs:2
 			}
 		},
 		activated() {
@@ -64,6 +66,11 @@
 			this.val = ''
 		},
 		methods: {
+			qing(){
+				this.lists=''
+				localStorage.hists=''
+				this.indexs=1
+			},
 			search() {
 				if(this.val) {
 					this.type = true

@@ -1,7 +1,18 @@
 <template>
 	<div style="background: #f5f5f5;">
+		<h_nav>
+			<div slot="left">
+				<router-link to="/">
+					<i class="iconfont icon-toright"></i>
+				</router-link>
+			</div>
+			<div slot="title">
+				我的
+			</div>
+			
+		</h_nav>
 		<div class="j_dad" @click="glogin">
-			<img :src="img_url" alt="" />
+			<img style="border-radius:50%" :src="img_url" alt="" />
 			<div>
 				<p v-if="inx==2">登陆/注册</p>
 				<p v-if="inx==1">{{names}}</p>
@@ -58,7 +69,11 @@
 </template>
 
 <script>
+import h_nav from './../components/h_nav.vue'
 	export default {
+		components: {
+			h_nav
+		},
 		methods:{
 			tiaoo(){
 				location.href="#/yue"

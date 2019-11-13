@@ -60,11 +60,11 @@
 		z-index: 2;
 		display: flex;
 		width: 100%;
-		height: 2.5rem;
+		height: 3rem;
 		padding-top: .5rem;
 	}
 	.j_dg p{
-		line-height: 0.5rem;
+		line-height: 0.9rem;
 	}
 	.active{
 		color:#3190e8 ;

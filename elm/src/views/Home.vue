@@ -14,12 +14,12 @@
 		<!-- 定位 header -->
 		<div class="header">
 			<div class="no1">
-				<span>当前定位城市:</span>
-				<span>定位不准时，请在城市列表中选择</span>
+				<span style="font-size:0.7rem">当前定位城市:</span>
+				<span style="font-size:0.5rem">定位不准时，请在城市列表中选择</span>
 			</div>
 			<div class="no2">
 				<router-link :to="{name: 'city',params: {id:header.id,name:header.name}}">
-					<span>{{header.name}}</span>
+					<span style="font-size:0.7rem">{{header.name}}</span>
 					<span>
 						<i class="iconfont icon-zuo"></i>
 					</span>
@@ -30,7 +30,7 @@
 		<div class="hot">
 			<span>热门城市</span>
 			<div>
-				<span v-for="(item,index) in hots" :key="index">
+				<span v-for="(item,index) in hots" :key="index" style="font-size:0.6rem;">
 					<router-link :to="{name: 'city',params: {id:item.id,name:item.name}}">
 						{{item.name}}
 					</router-link>
@@ -42,8 +42,8 @@
 			<div v-for="(i,key,index) in list" :key="index">
 				<p>{{key}}<span>(按字母排序)</span></p>
 				<div>
-					<span v-for="(ii,index) in i" :key="index">
-						<router-link :to="{name: 'city',params: {id:ii.id,name:ii.name}}">
+					<span v-for="(ii,index) in i" :key="index" style="font-size:0.6rem">
+						<router-link :to="{name: 'city',params: {id:ii.id,name:ii.name}}" style="color:black">
 							{{ii.name}}
 						</router-link>
 					</span>
@@ -123,7 +123,8 @@
 	}
 
 	#home .header {
-		margin: 1.25rem 0;
+		/* margin: 1.25rem 0; */
+		margin-bottom: 1rem;
 		background: white;
 	}
 

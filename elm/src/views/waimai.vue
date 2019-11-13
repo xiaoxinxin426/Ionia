@@ -92,7 +92,7 @@
 	}
 </script>
 
-<style scoped="">
+<style scoped>
 	* {
 		margin: 0;
 		padding: 0;
@@ -108,6 +108,9 @@
 	.j_div p .j_sj {
 		padding-left: 0.5rem;
 		background: #FFFFFF;
+	}
+	.j_div p{
+		padding-left: 0;
 	}
 	
 	.j_div .icon-dianpu {
